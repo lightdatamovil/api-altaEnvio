@@ -93,7 +93,8 @@ router.post("/cargamasivanoflex", async (req, res) => {
                 ml_vendedor_id: envio.ml_vendedor_id || undefined,
                 ml_qr_seguridad: envio.ml_qr_seguridad || undefined,
                 estado: envio.estado , // Valor por defecto
-                enviosDireccionesDestino: envio.direcciones_destino
+                enviosDireccionesDestino: envio.direcciones_destino,
+                enviosObservaciones: envio.observaciones
             };
 
 
