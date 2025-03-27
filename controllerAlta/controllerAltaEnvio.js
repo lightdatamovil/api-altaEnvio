@@ -207,6 +207,7 @@ async function AltaEnvio(company, connection, data) {
 
             
                 logPurple("FINAL");
+                return true 
             }
 
          

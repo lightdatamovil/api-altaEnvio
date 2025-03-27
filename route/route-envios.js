@@ -42,8 +42,16 @@ router.post("/cargardatos", async (req, res) => {
 
       let resultado=  await AltaEnvio(company, connection, data);
         
-       
-        res.status(200).json({ message: "Datos cargados exitosamente." });
+       if(resultado== true ){
+
+           res.status(200).json({ message: "Datos cargados exitosamente." });
+       }
+       else{
+        res.status(500).json({ message: "Error al cargar los datos.",
+            succes: false,
+            error: error
+         });
+       }
     } catch (error) {
         console.error(error);
   
