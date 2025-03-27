@@ -19,7 +19,7 @@ async function AltaEnvio(company, connection, data) {
     try {
         if (!data.data || !data.data.enviosDireccionesDestino || 
             !data.data.enviosDireccionesDestino.calle || 
-            !data.data.enviosDireccionesDestino.henry || 
+         
             !data.data.enviosDireccionesDestino.cp || 
             !data.data.enviosDireccionesDestino.localidad) {
             
