@@ -106,7 +106,8 @@ router.post("/cargamasivanoflex", async (req, res) => {
         // Llama a AltaEnvio para cada envío transformado
         await Promise.all(enviosTransformados.map(envio => AltaEnvio(company, connection, envio)));
 
-        res.status(200).json({ message: "Datos transformados y cargados exitosamente." });
+        res.status(200).json({ message: "Datos transformados y cargados exitosamente." ,
+  succes:true });
     } catch (error) {
         console.error(error);
         res.status(500).json({ message: error.message });
