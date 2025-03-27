@@ -83,6 +83,7 @@ router.post("/cargamasivanoflex", async (req, res) => {
                 idEmpresa: envio.idEmpresa,
                 observaciones: envio.observaciones,
                 logisticainversa: envio.logisticainversa,
+                quien: envio.quien , 
                 // Agrega otros campos relevantes aquí
                 flex: envio.flex || undefined,
                 didCuenta: envio.didCuenta || undefined,
@@ -91,7 +92,7 @@ router.post("/cargamasivanoflex", async (req, res) => {
                 fullfillment: envio.fullfillment || undefined,
                 ml_vendedor_id: envio.ml_vendedor_id || undefined,
                 ml_qr_seguridad: envio.ml_qr_seguridad || undefined,
-                estado_envio: envio.estado_envio || 1, // Valor por defecto
+                estado_envio: envio.estado , // Valor por defecto
                 enviosDireccionesDestino: envio.direcciones_destino
             };
 

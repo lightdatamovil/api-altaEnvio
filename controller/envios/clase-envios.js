@@ -2,7 +2,7 @@ const { getConnection, getFromRedis, executeQuery } = require('../../dbconfig');
 const { logYellow, logBlue } = require('../../fuctions/logsCustom');
 
 class Envios {
-    constructor(data,company = null,connection = null,estado_envio=1) {
+    constructor(data,company = null,connection = null) {
         const {
             did = 0,
             didDeposito = 1,
@@ -79,7 +79,7 @@ class Envios {
         this.elim = elim; // Asignar aquí
         this.company = company;
         this.connection = connection
-        this.estado_envio=estado_envio 
+     
         
     }
 

@@ -8,8 +8,10 @@ const EnviosObservaciones = require("../controller/envios/clase-envios_observaci
 const EnviosDireccionesRemitente = require("../controller/envios/clase-envios_remitente");
 const EnviosFlex = require("../controller/envios/clase-enviosflex");
 const Ordenes = require("../controller/ordenes/claseordenes");
-const { logYellow, logGreen, logPurple } = require("../fuctions/logsCustom");
+const { logYellow, logGreen, logPurple, logBlue } = require("../fuctions/logsCustom");
 const { error } = require("console");
+const sendToShipmentStateMicroService = require("../fuctions/sendToshipmentStateMicroservice");
+const { json } = require("stream/consumers");
 
 
 
@@ -20,8 +22,8 @@ async function AltaEnvio(company, connection, data) {
         if (!data.data || !data.data.enviosDireccionesDestino || 
             !data.data.enviosDireccionesDestino.calle || 
          
-            !data.data.enviosDireccionesDestino.cp || 
-            !data.data.enviosDireccionesDestino.localidad) {
+            !data.data.enviosDireccionesDestino.cp 
+         ) {
             
            return false
             }
@@ -146,6 +148,7 @@ async function AltaEnvio(company, connection, data) {
                         data.data.enviosDireccionesDestino.numero,
                         data.data.enviosDireccionesDestino.address_line || `${data.data.enviosDireccionesDestino.calle} ${data.data.enviosDireccionesDestino.numero}`,
                         data.data.enviosDireccionesDestino.cp,
+                        data.data.enviosDireccionesDestino.ciudad,
                         data.data.enviosDireccionesDestino.localidad,
                         data.data.enviosDireccionesDestino.provincia,
                         data.data.enviosDireccionesDestino.pais || "Argentina",
@@ -206,7 +209,9 @@ async function AltaEnvio(company, connection, data) {
                     await enviosItems.insert(); // Asegúrate de que `insert()` esté definido en EnviosItems
                 }
 
-            
+           let respuesta= await sendToShipmentStateMicroService(company.did, data.data.quien, insertId,1);
+           console.log(respuesta,"respuesta");
+           
                 logPurple("FINAL");
                 return true 
             }

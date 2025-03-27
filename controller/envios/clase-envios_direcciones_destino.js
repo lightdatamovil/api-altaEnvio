@@ -3,7 +3,7 @@ const { logYellow, logBlue } = require('../../fuctions/logsCustom');
 
 // Clase EnviosDireccionesDestino
 class EnviosDireccionesDestino {
-  constructor(did = "", didEnvio, calle = null, numero = null, address_line = null, cp = null, localidad = null, provincia = "", pais = "", latitud = "", longitud = "", 
+  constructor(did = "", didEnvio, calle = null, numero = null, address_line = null, cp = null,ciudad = "", localidad = "", provincia = "", pais = "", latitud = "", longitud = "", 
     quien = null, company = null,destination_comments="",delivery_preference="",conHorario="",prioridad="",connection = null) {
 
     
@@ -11,8 +11,9 @@ class EnviosDireccionesDestino {
     this.didEnvio = didEnvio;
     this.calle = calle;
     this.numero = numero;
-    this.address_line = calle?.numero; // Asegúrate de que 'calle' sea un objeto con 'numero'
+    this.address_line = calle+numero; // Asegúrate de que 'calle' sea un objeto con 'numero'
     this.cp = cp;
+    this.ciudad = ciudad;
     this.localidad = localidad;
     this.provincia = provincia;
     this.pais = pais;
@@ -60,7 +61,10 @@ class EnviosDireccionesDestino {
 async checkAndUpdateDidEnvio(connection) {
     try {
         const checkDidEnvioQuery = 'SELECT id FROM envios_direcciones_destino WHERE didEnvio = ?';
-        const results = await executeQuery(connection, checkDidEnvioQuery, [this.didEnvio]);
+   
+      
+        
+        const results = await executeQuery(connection, checkDidEnvioQuery, [this.didEnvio],true);
 
         if (results.length > 0) {
             // Si `didEnvio` ya existe, actualizarlo

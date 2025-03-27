@@ -11,6 +11,7 @@ class EnviosDireccionesRemitente {
     this.numero = numero;
     this.address_line = address_line || `${calle} ${numero}`; // Si no se pasa address_line, se genera a partir de calle y numero
     this.cp = cp;
+
     this.localidad = localidad;
     this.provincia = provincia;
     this.pais = pais;
@@ -84,8 +85,6 @@ async createNewRecord(connection) {
         const values = filteredColumns.map((column) => this[column]);
         const insertQuery = `INSERT INTO envios_direcciones_remitente (${filteredColumns.join(', ')}) VALUES (${filteredColumns.map(() => '?').join(', ')})`;
 
-        logYellow(`Insert Query: ${JSON.stringify(insertQuery)}`);
-        logBlue(`Values: ${JSON.stringify(values)}`);
 
         const insertResult = await executeQuery(connection, insertQuery, values);
         return { insertId: insertResult.insertId };
