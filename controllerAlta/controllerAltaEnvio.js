@@ -23,10 +23,11 @@ async function AltaEnvio(company, connection, data) {
             !data.data.enviosDireccionesDestino.cp || 
             !data.data.enviosDireccionesDestino.localidad) {
             
-            console.error("Faltan campos obligatorios en la dirección de destino");
-           
-            return ;
-        }
+           return false
+            }
+        
+            
+        
 
         const email = data.data.destination_receiver_email;
         delete data.data.destination_receiver_email;
@@ -214,20 +215,11 @@ async function AltaEnvio(company, connection, data) {
         } catch (error) {
             
             console.error("Error durante la inserción:", error);
-          return res.status(500).send({
-            estado: false,
-            error: -1
-          })
+          return false
         }
     } catch (error) {
         console.error("Error en la función principal:", error);
-        return res.status(500).send({
-            estado: false,
-            error: -1
-        });
-
-    }finally{
-      
+        return false
     }
 }
 

@@ -40,25 +40,16 @@ router.post("/cargardatos", async (req, res) => {
     const connection = await getConnection(company.did);
     try {
 
-      let resultado=  await AltaEnvio(company, connection, data);
+        await AltaEnvio(company, connection, data);
         
-       if(resultado== true ){
-
-           res.status(200).json({ message: "Datos cargados exitosamente." });
-       }
-       else{
-        res.status(500).json({ message: "Error al cargar los datos.",
-            succes: false,
-            error: error
-         });
-       }
+        // Responder al cliente después de procesar la solicitud
+        res.status(200).json({ message: "Datos cargados exitosamente." });
     } catch (error) {
         console.error(error);
   
         // En caso de error, responder con un mensaje de error
         res.status(500).json({ message: "Error al cargar los datos.",
-            succes: false,
-            error: error
+            succes: false
          });
     }finally{
         connection.end();
@@ -112,10 +103,18 @@ router.post("/cargamasivanoflex", async (req, res) => {
             return { data }; // Retornar el objeto data
         });
 
-    console.log(enviosTransformados, "enviosTransformados");
+
     
         // Llama a AltaEnvio para cada envío transformado
-        await Promise.all(enviosTransformados.map(envio => AltaEnvio(company, connection, envio)));
+      let resultado=  await Promise.all(enviosTransformados.map(envio => AltaEnvio(company, connection, envio)));
+      console.log(resultado,"resultado");
+      
+      if(resultado[0] ===false){
+
+       return  res.status(500).json({ message: "Error al cargar los datos.",
+        succes: false
+     });
+      }
 
         res.status(200).json({ message: "Datos transformados y cargados exitosamente." ,
   succes:true });
