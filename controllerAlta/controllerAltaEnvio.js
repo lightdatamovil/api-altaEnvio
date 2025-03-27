@@ -209,7 +209,7 @@ async function AltaEnvio(company, connection, data) {
                     await enviosItems.insert(); // Asegúrate de que `insert()` esté definido en EnviosItems
                 }
 
-           let respuesta= await sendToShipmentStateMicroService(company.did, data.data.quien, insertId,1);
+           let respuesta= await sendToShipmentStateMicroService(company.did, data.data.quien, insertId,data.data.estado);
            console.log(respuesta,"respuesta");
            
                 logPurple("FINAL");
