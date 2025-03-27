@@ -8,7 +8,7 @@ class EnviosObservaciones {
     this.observacion = observacion || "efectivamente la observacion default de light data"; // Valor por defecto si observacion es null
     this.quien = quien || 0; // Valor por defecto para quien
     this.desde = desde;
-    this.autofecha = new Date().toISOString().slice(0, 19).replace('T', ' '); // Asignando la fecha y hora actual
+   
     this.company = company;
     this.connection = connection
     // Asegurarse de que idEmpresa sea siempre un string
