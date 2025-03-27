@@ -40,9 +40,9 @@ router.post("/cargardatos", async (req, res) => {
     const connection = await getConnection(company.did);
     try {
 
-        await AltaEnvio(company, connection, data);
+      let resultado=  await AltaEnvio(company, connection, data);
         
-        // Responder al cliente después de procesar la solicitud
+       
         res.status(200).json({ message: "Datos cargados exitosamente." });
     } catch (error) {
         console.error(error);

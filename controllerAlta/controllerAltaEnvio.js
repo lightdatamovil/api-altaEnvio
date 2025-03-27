@@ -9,6 +9,7 @@ const EnviosDireccionesRemitente = require("../controller/envios/clase-envios_re
 const EnviosFlex = require("../controller/envios/clase-enviosflex");
 const Ordenes = require("../controller/ordenes/claseordenes");
 const { logYellow, logGreen, logPurple } = require("../fuctions/logsCustom");
+const { error } = require("console");
 
 
 
@@ -18,13 +19,13 @@ async function AltaEnvio(company, connection, data) {
     try {
         if (!data.data || !data.data.enviosDireccionesDestino || 
             !data.data.enviosDireccionesDestino.calle || 
-            !data.data.enviosDireccionesDestino.herny || 
+            !data.data.enviosDireccionesDestino.henry || 
             !data.data.enviosDireccionesDestino.cp || 
             !data.data.enviosDireccionesDestino.localidad) {
             
             console.error("Faltan campos obligatorios en la dirección de destino");
            
-            return;
+            return ;
         }
 
         const email = data.data.destination_receiver_email;
@@ -210,11 +211,19 @@ async function AltaEnvio(company, connection, data) {
 
          
         } catch (error) {
+            
             console.error("Error durante la inserción:", error);
-          
+          return res.status(500).send({
+            estado: false,
+            error: -1
+          })
         }
     } catch (error) {
         console.error("Error en la función principal:", error);
+        return res.status(500).send({
+            estado: false,
+            error: -1
+        });
 
     }finally{
       
