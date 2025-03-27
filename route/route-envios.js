@@ -54,7 +54,7 @@ router.post("/cargardatos", async (req, res) => {
     }
 });
 router.post("/cargamasivanoflex", async (req, res) => {
-    const envios = req.body; // Array de envíos en el nuevo formato
+  const envios =JSON.parse(req.body.envios); // Array de envíos en el nuevo formato
     const empresa = envios[0].idEmpresa;
     const company = await getCompanyById(empresa);
     const connection = await getConnection(company.did);
