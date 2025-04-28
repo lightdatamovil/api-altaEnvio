@@ -213,7 +213,9 @@ async function AltaEnvio(company, connection, data) {
            console.log(respuesta,"respuesta");
            
                 logPurple("FINAL");
-                return true 
+                return {
+                    success: true,
+                    insertId: insertId}
             }
 
          

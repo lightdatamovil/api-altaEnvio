@@ -40,7 +40,7 @@ router.post("/cargardatos", async (req, res) => {
     const connection = await getConnection(company.did);
     try {
 
-        await AltaEnvio(company, connection, data);
+      let result =  await AltaEnvio(company, connection, data);
         
         // Responder al cliente después de procesar la solicitud
         res.status(200).json({ message: "Datos cargados exitosamente." });
@@ -111,7 +111,7 @@ router.post("/cargamasivanoflex", async (req, res) => {
       let resultado=  await Promise.all(enviosTransformados.map(envio => AltaEnvio(company, connection, envio)));
       console.log(resultado,"resultado");
       
-      if(resultado[0] ===false){
+      if(resultado[0].success ===false){
 
        return  res.status(500).json({ message: "Error al cargar los datos.",
         succes: false

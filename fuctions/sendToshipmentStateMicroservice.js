@@ -9,6 +9,11 @@ const { formatFechaUTC3 } = require('./formatFechaUTC3.js');
 
 const RABBITMQ_URL = "amqp://lightdata:QQyfVBKRbw6fBb@158.69.131.226:5672"
 const QUEUE_ESTADOS = "srvshipmltosrvstates"
+function getFechaUTC3() {
+    const fecha = new Date();
+    fecha.setHours(fecha.getHours() + 3); // Añade 3 horas
+    return fecha.toISOString(); // Devuelve la fecha en formato ISO
+}
 
 async function sendToShipmentStateMicroService(companyId, userId, shipmentId,estado) {
     try {
@@ -23,7 +28,7 @@ console.log(companyId, userId, shipmentId,estado,"cosas");
             estado: estado,
             subestado: null,
             estadoML: null,
-            fecha: formatFechaUTC3(),
+            fecha: getFechaUTC3(),
             quien: userId,
             operacion: "Altamasiva"
         };
