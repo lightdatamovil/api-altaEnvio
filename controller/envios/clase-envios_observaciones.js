@@ -5,7 +5,7 @@ const { logYellow, logBlue } = require('../../fuctions/logsCustom');
 class EnviosObservaciones {
   constructor(didEnvio = "", observacion = "", quien = "", desde = "", company = null,connection = null) {
     this.didEnvio = didEnvio;
-    this.observacion = observacion || "efectivamente la observacion default de light data"; // Valor por defecto si observacion es null
+    this.observacion = observacion || ""; // Valor por defecto si observacion es null
     this.quien = quien || 0; // Valor por defecto para quien
     this.desde = desde;
    
