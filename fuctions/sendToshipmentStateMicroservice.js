@@ -11,7 +11,7 @@ const RABBITMQ_URL = "amqp://lightdata:QQyfVBKRbw6fBb@158.69.131.226:5672"
 const QUEUE_ESTADOS = "srvshipmltosrvstates"
 function getFechaUTC3() {
     const fecha = new Date();
-    fecha.setHours(fecha.getHours() + 3); // Añade 3 horas
+    fecha.setHours(fecha.getHours() - 3); // Añade 3 horas
     return fecha.toISOString(); // Devuelve la fecha en formato ISO
 }
 
