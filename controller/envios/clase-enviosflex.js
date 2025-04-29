@@ -89,8 +89,8 @@ async createNewRecord(connection, did) {
         const values = filteredColumns.map((column) => this[column]);
 
         const insertQuery = `INSERT INTO envios (${filteredColumns.join(', ')}) VALUES (${filteredColumns.map(() => '?').join(', ')})`;
-        logYellow(`Insert Query: ${JSON.stringify(insertQuery)}`);
-        logBlue(`Values: ${JSON.stringify(values)}`);
+      //  logYellow(`Insert Query: ${JSON.stringify(insertQuery)}`);
+      //  logBlue(`Values: ${JSON.stringify(values)}`);
 
         const insertResult = await executeQuery(connection, insertQuery, values);
         const insertId = insertResult.insertId;
