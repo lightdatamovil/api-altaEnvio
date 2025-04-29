@@ -127,7 +127,7 @@ async function AltaEnvio(company, connection, data) {
 
                 // Validación y creación de EnviosObservaciones
                 if (data.data.enviosObservaciones) {
-                    const observacionDefault = data.data.enviosObservaciones.observacion || "";
+                    const observacionDefault = data.data.enviosObservaciones || "";
 
                     const observaciones = new EnviosObservaciones(
                         insertId,
