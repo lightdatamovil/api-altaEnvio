@@ -1,0 +1,66 @@
+{
+
+  "data":
+{
+    "idEmpresa": 1,****
+
+    "did": 0, ***
+  "didDeposito": 1, 
+  "fulfillment": 1,
+  "gtoken": "",
+  "flex": 1,****
+  "turbo": 0,
+  "fecha_inicio": "2025-02-27",
+  "fechaunix": 1740660405,
+  "lote": "mlia",
+  "ml_shipment_id": 44530052967,
+  "ml_vendedor_id": "179907718",
+  "ml_venta_id": 2000010852404462,
+  "ml_pack_id": 2000007260258439,
+  "ml_qr_seguridad": "",
+  "didCliente": 1,***
+  "didCuenta": 1,****
+  "didServicio": 1,
+  "peso": 1175,
+  "volumen": 0,
+  "bultos": 1,
+  "valor_declarado": 22499,
+  "monto_total_a_cobrar": 0,
+  "tracking_method": "MEL Distribution",
+  "tracking_number": 44530052967,
+  "fecha_venta": "2025-02-24T17:19:09.000-04:00",
+  "destination_receiver_name": "Antonella Orellano",
+  "destination_receiver_phone": "XXXXXXX",
+  "destination_receiver_email": "",
+  "destination_comments": null,
+  "delivery_preference": "C",
+  "quien": 0,****
+  "enviosObservaciones": { "observacion": null },
+  "enviosDireccionesDestino": {***
+    "calle": "Calle Rivadavia",***
+    "numero": "139",***
+    "address_line": "Calle Rivadavia 139",
+    "cp": "2523",****
+    "localidad": "Belgrano",***
+    "provincia": "Santa Fe",
+    "pais": "Argentina",
+    "latitud": -32.423496,
+    "longitud": -61.888849,
+    "quien": 0,
+    "destination_comments": null,
+    "delivery_preference": "C"
+  },
+  "enviosItems": [
+    {
+      "codigo": "MLA1932862490",
+      "imagen": "",
+      "descripcion": "Chicco Easy Bowl Plato De Silicona Con Ventosa 6m+ Color Rosado",
+      "ml_id": "MLA1932862490",
+      "dimensions": "31.0x20.0x27.0",
+      "cantidad": 1,
+      "variacion": "",
+      "seller_sku": "104008051BA"
+    }
+  ]
+}
+}
